@@ -6,10 +6,10 @@ use lazy_static::lazy_static;
 #[cfg(unix)]
 pub use crate::unix::*;
 #[cfg(windows)]
-pub use windows::*;
+pub use crate::windows::*;
 
 #[cfg(all(not(unix), not(windows)))]
-pub use generic::*;
+pub use crate::generic::*;
 
 /// Returns the default value for `colors_enabled`.
 pub fn enable_colors_by_default() -> bool {

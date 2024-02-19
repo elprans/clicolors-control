@@ -1,4 +1,5 @@
 use std::env;
+use std::io::{self, IsTerminal};
 use std::mem;
 use std::slice;
 use winapi::ctypes::c_void;
@@ -15,7 +16,7 @@ use winapi::um::winnt::WCHAR;
 const ENABLE_VIRTUAL_TERMINAL_PROCESSING: u32 = 0x4;
 
 pub fn is_a_terminal() -> bool {
-    atty::is(atty::Stream::Stdout)
+    io::stdin().is_terminal()
 }
 
 #[cfg(feature = "terminal_autoconfig")]

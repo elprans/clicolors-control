@@ -1,6 +1,8 @@
+use std::io::{self, IsTerminal};
+
 #[inline(always)]
 pub fn is_a_terminal() -> bool {
-    unsafe { libc::isatty(libc::STDOUT_FILENO) == 1 }
+    io::stdin().is_terminal()
 }
 
 #[inline(always)]
